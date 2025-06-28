@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:games_app/models.dart/game.dart';
+import 'package:games_app/pages/game_detail_page.dart';
 import 'package:games_app/repositories/games_repository.dart';
 
 class GameListPage extends StatefulWidget {
@@ -52,6 +53,14 @@ class _GameListPageState extends State<GameListPage> {
       itemBuilder: (context, index) {
         final game = games[index];
         return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GameDetailPage(game: game),
+              ),
+            );
+          },
           child: Card(
             elevation: 4,
             child: Column(
